@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "MarketCoreContract": {
+      "address": "0xE1576Bf23Ea9008A2635bB610DaA5056be8878dF",
+      "startBlock": 0
+    }
+  }
+}

@@ -1,0 +1,56 @@
+type BetPlaced @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  marketId: BigInt! # uint256
+  amount: BigInt! # uint256
+  outcome: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketActivated @entity(immutable: true) {
+  id: Bytes!
+  marketId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketCreated @entity(immutable: true) {
+  id: Bytes!
+  marketId: BigInt! # uint256
+  title: String! # string
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MarketResolved @entity(immutable: true) {
+  id: Bytes!
+  marketId: BigInt! # uint256
+  winningOutcome: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PrizeDistributed @entity(immutable: true) {
+  id: Bytes!
+  marketId: BigInt! # uint256
+  winner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,41 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MarketCoreContract
+    network: base-sepolia
+    source:
+      address: "0xE1576Bf23Ea9008A2635bB610DaA5056be8878dF"
+      abi: MarketCoreContract
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BetPlaced
+        - MarketActivated
+        - MarketCreated
+        - MarketResolved
+        - OwnershipTransferred
+        - PrizeDistributed
+      abis:
+        - name: MarketCoreContract
+          file: ./abis/MarketCoreContract.json
+      eventHandlers:
+        - event: BetPlaced(indexed address,indexed uint256,uint256,bool)
+          handler: handleBetPlaced
+        - event: MarketActivated(indexed uint256)
+          handler: handleMarketActivated
+        - event: MarketCreated(indexed uint256,string,indexed address)
+          handler: handleMarketCreated
+        - event: MarketResolved(indexed uint256,bool)
+          handler: handleMarketResolved
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PrizeDistributed(indexed uint256,indexed address,uint256)
+          handler: handlePrizeDistributed
+      file: ./src/market-core-contract.ts
