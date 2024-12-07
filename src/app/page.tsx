@@ -1,5 +1,4 @@
 import { Layout } from "@/components/layout";
-import { Button } from "@/components/ui/button";
 import { Wallet, Box, Target, BarChart3 } from "lucide-react";
 import Image from "next/image";
 import laptop from "@/images/laptop.png";

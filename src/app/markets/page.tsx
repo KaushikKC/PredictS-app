@@ -4,7 +4,6 @@ import { Layout } from "@/components/layout";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { MarketCard } from "@/components/market-card";
 
 const categories = [
@@ -32,6 +31,7 @@ export default function MarketsPage() {
 
         <div className="flex w-full justify-between gap-6 overflow-x-auto pb-2">
           {categories.map((category) => (
+            // eslint-disable-next-line react/jsx-key
             <div className="flex items-center">
               <div className="first-purple-bar"></div>
               <Button
