@@ -1,22 +1,16 @@
-// src/services/coinbase.service.js
 const { Coinbase, ServerSigner, Wallet } = require("@coinbase/coinbase-sdk");
-// require('dotenv').config({ path: '../../.env' });
-class CoinbaseService { 
+
+class CoinbaseService {
   constructor() {
     this.initialize();
   }
 
   async initialize() {
     try {
-      // Initialize CDP SDK
       Coinbase.configureFromJson({
         filePath: process.env.CDP_API_KEY_PATH,
       });
-
-      // Enable Server-Signer
       Coinbase.useServerSigner = true;
-
-      // Verify Server-Signer
       await this.verifyServerSigner();
     } catch (error) {
       console.error("Coinbase SDK initialization failed:", error);
@@ -50,6 +44,30 @@ class CoinbaseService {
     }
   }
 
+  async getWalletBalance(walletId) {
+    try {
+      // Create a new CDP wallet instance using the stored walletId
+      const cdpWallet = await Wallet.create({
+        networkId: Coinbase.networks.BaseSepolia,
+        id: walletId,
+      });
+
+      // Get the balance using the CDP wallet instance
+      const balance = await cdpWallet.getBalance(Coinbase.assets.Eth);
+      const usdcBalance = await cdpWallet.getBalance(Coinbase.assets.Usdc);
+
+      return {
+        address: cdpWallet.addresses[0].id,
+        balances: {
+          ETH: balance,
+          USDC: usdcBalance,
+        },
+      };
+    } catch (error) {
+      console.error("Failed to get wallet balance:", error);
+      throw error;
+    }
+  }
   async signTransaction(wallet, transaction) {
     try {
       return await wallet.sign(transaction);
