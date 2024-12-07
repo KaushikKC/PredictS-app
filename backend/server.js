@@ -1,11 +1,14 @@
 // server.js
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+
 const connectDB = require("./src/utils/db.connect");
 const walletRoutes = require("./src/routes/wallet.routes");
+const oracleRoutes = require("./src/routes/oracles.routes");
 
-// Load env vars
+// // Load env vars
 dotenv.config();
 
 const app = express();
@@ -16,9 +19,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/wallet", walletRoutes);
-
-// Remove this line as it's incorrectly placed
-// router.get("/user/:userId", walletRoutes);
+app.use("/api/oracle", oracleRoutes);
 
 // Error handler
 app.use((err, req, res, next) => {
@@ -29,14 +30,24 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 // Initialize server with database connection
 const startServer = async () => {
   try {
+    if (!process.env.RPC_URL) {
+      throw new Error('Please configure RPC_URL in your .env file');
+    }
+    
     await connectDB();
+    
+    const ChainlinkService = require("./src/services/chainlink.service");
+    const chainlinkService = new ChainlinkService();
+    await chainlinkService.initialize();
+    
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
+      console.log(`Oracle endpoints available at /api/oracle/*`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

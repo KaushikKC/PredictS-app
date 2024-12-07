@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { UserCircle } from "lucide-react";
 import S from "@/images/s.png";
 import Image from "next/image";

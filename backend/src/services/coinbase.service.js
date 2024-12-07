@@ -1,7 +1,7 @@
 // src/services/coinbase.service.js
 const { Coinbase, ServerSigner, Wallet } = require("@coinbase/coinbase-sdk");
-
-class CoinbaseService {
+// require('dotenv').config({ path: '../../.env' });
+class CoinbaseService { 
   constructor() {
     this.initialize();
   }

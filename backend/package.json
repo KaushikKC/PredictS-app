@@ -10,6 +10,7 @@
     "@coinbase/coinbase-sdk": "latest",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "ethers": "^6.13.4",
     "express": "^4.18.2",
     "mongoose": "^7.0.0"
   },
