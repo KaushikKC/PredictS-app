@@ -55,7 +55,6 @@ const Chatbot = () => {
 
     const userMessage = { id: Date.now(), type: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
-
     await sendApiCall(input); // Trigger API call with user input
     setInput(""); // Clear input field
   };
