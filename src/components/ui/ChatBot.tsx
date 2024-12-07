@@ -18,8 +18,8 @@ const Chatbot = () => {
   const sendMessage = () => {
     if (input.trim() === "") return;
 
-    const userMessage = { id: Date.now(), type: "user", text: input };
-    const botReply = {
+    const userMessage: Message = { id: Date.now(), type: "user", text: input };
+    const botReply: Message = {
       id: Date.now() + 1,
       type: "bot",
       text: "This is a sample bot response.", // Replace with actual bot logic
