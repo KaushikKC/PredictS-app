@@ -1,9 +1,7 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import { TbMessageChatbotFilled } from "react-icons/tb";
-import user from "../../images/avatar.png"
-import bot from "../../images/chat.png"
 
 interface Message {
   id: number;
@@ -39,7 +37,6 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <TbMessageChatbotFilled size={24} />
-
       </div>
 
       {/* Chat Window */}
@@ -60,12 +57,16 @@ const Chatbot = () => {
                 } gap-4`}
               >
                 <Image
-  src={msg.type === "user" ? "/images/avatar.png" : "/images/chat.png"}
-  alt={msg.type === "user" ? "User" : "Bot"}
-  width={30}
-  height={30}
-  className="rounded-full"
-/>
+                  src={
+                    msg.type === "user"
+                      ? "/images/avatar.png"
+                      : "/images/chat.png"
+                  }
+                  alt={msg.type === "user" ? "User" : "Bot"}
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                />
 
                 <div
                   className={`max-w-[70%] p-3 border ${
@@ -95,8 +96,6 @@ const Chatbot = () => {
             >
               Send
             </button>
-           
-
           </div>
         </div>
       )}
