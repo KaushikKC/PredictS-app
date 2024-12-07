@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "MarketNFTContract": {
+      "address": "0xc5a5c2304A19a10f135A08ac70648A9EE60AA41B",
+      "startBlock": 0
+    }
+  }
+}

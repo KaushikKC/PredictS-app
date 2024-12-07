@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MarketNFTContract
+    network: base-sepolia
+    source:
+      address: "0xc5a5c2304A19a10f135A08ac70648A9EE60AA41B"
+      abi: MarketNFTContract
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - MetadataUpdate
+        - NFTIssued
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: MarketNFTContract
+          file: ./abis/MarketNFTContract.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: MetadataUpdate(uint256)
+          handler: handleMetadataUpdate
+        - event: NFTIssued(indexed address,indexed uint256,string)
+          handler: handleNFTIssued
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/market-nft-contract.ts
