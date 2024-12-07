@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "GovernanceContract": {
+      "address": "0x338F9e2AeD8B576e1C525AD3D417A9034AF1583c",
+      "startBlock": 0
+    }
+  }
+}
