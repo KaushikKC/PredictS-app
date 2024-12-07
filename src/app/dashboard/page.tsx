@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout";
 import { MarketCard } from "@/components/market-card";
 import { StatsCard } from "@/components/stats-card";
+import Chatbot from "@/components/ui/ChatBot";
 import { UserCircle } from "lucide-react";
 
 export default function Dashboard() {
@@ -126,6 +127,7 @@ export default function Dashboard() {
               </li>
             </ul>
           </div>
+          <Chatbot />
         </section>
       </div>
     </Layout>

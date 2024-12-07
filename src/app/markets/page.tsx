@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { MarketCard } from "@/components/market-card";
+import Chatbot from "@/components/ui/ChatBot";
 
 const categories = [
   "Top Markets",
@@ -127,6 +128,7 @@ export default function MarketsPage() {
           />
         </div>
       </div>
+      <Chatbot />
     </Layout>
   );
 }

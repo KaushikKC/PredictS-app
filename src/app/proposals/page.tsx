@@ -4,6 +4,7 @@ import { ClosedProposalCard } from "@/components/closed-proposal-card";
 import { Layout } from "@/components/layout";
 import MarketProposalModal from "@/components/marketProposalModel";
 import { ProposalCard } from "@/components/proposal-card";
+import Chatbot from "@/components/ui/ChatBot";
 import React, { useState } from "react";
 
 function Proposals() {
@@ -85,6 +86,7 @@ function Proposals() {
           </div>
         </div>
       </section>
+      <Chatbot />
     </Layout>
   );
 }

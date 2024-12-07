@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout";
 import NFTCard from "@/components/NFTCard";
+import Chatbot from "@/components/ui/ChatBot";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import React from "react";
@@ -35,6 +36,7 @@ function NFTMarketPlace() {
           <NFTCard />
         </div>
       </div>
+      <Chatbot />
     </Layout>
   );
 }
